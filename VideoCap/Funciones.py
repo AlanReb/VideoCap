@@ -1213,4 +1213,33 @@ def combinar_resultados(img, resultados):
     for coords, _, _ in resultados:
         for (y, x) in coords:
             img_final[y, x] = [0, 255, 0]
+
     return img_final
+
+def start_cascade_detect():
+"""
+Iniciar todos los detectores de cascade xml en cv2 (ojos, cara, boca, orejas)
+"""
+
+        face_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_frontalface_alt.xml')
+        
+        mouth_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_mcs_mouth.xml')
+    
+        left_ear_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_mcs_leftear.xml')
+    
+        right_ear_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_mcs_rightear.xml')
+    
+        eye_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_eye.xml')
+    
+        if face_cascade.empty():
+                raise IOError('Unable to load the face cascade classifier xml file')
+        if eye_cascade.empty():
+                raise IOError('Unable to load the eye cascade classifier xml file')
+        if mouth_cascade.empty():
+                raise IOError('Unable to load the mouth cascade classifier xml file')
+        if left_ear_cascade.empty():
+                raise IOError('Unable to load the left ear cascade classifier xml file')
+        if right_ear_cascade.empty():
+                raise IOError('Unable to load the right ear cascade classifier xml file')
+ 
+        return face_cascade, mouth_cascade, left_ear_cascade, right_ear_cascade,eye_cascade
