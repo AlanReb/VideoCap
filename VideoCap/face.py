@@ -1,6 +1,10 @@
 import cv2
-import numpy as np
-face_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_frontalface_alt.xml')
+import os
+
+# Ruta interna de OpenCV donde están los XML
+haar_path = cv2.data.haarcascades
+face_cascade = cv2.CascadeClassifier(os.path.join(haar_path, 'haarcascade_frontalface_alt.xml'))
+
 cap = cv2.VideoCapture(0)
 scaling_factor = 0.5
 while True:
