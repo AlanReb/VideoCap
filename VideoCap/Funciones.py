@@ -1218,16 +1218,10 @@ def combinar_resultados(img, resultados):
 
 def start_cascade_detect():
 """
-Iniciar todos los detectores de cascade xml en cv2 (ojos, cara, boca, orejas)
+Iniciar todos los detectores de cascade xml en cv2 (ojos, cara, boca, orejas) que funcionen
 """
 
         face_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_frontalface_alt.xml')
-        
-        mouth_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_mcs_mouth.xml')
-    
-        left_ear_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_mcs_leftear.xml')
-    
-        right_ear_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_mcs_rightear.xml')
     
         eye_cascade = cv2.CascadeClassifier('./cascade_files/haarcascade_eye.xml')
     
@@ -1235,11 +1229,6 @@ Iniciar todos los detectores de cascade xml en cv2 (ojos, cara, boca, orejas)
                 raise IOError('Unable to load the face cascade classifier xml file')
         if eye_cascade.empty():
                 raise IOError('Unable to load the eye cascade classifier xml file')
-        if mouth_cascade.empty():
-                raise IOError('Unable to load the mouth cascade classifier xml file')
-        if left_ear_cascade.empty():
-                raise IOError('Unable to load the left ear cascade classifier xml file')
-        if right_ear_cascade.empty():
-                raise IOError('Unable to load the right ear cascade classifier xml file')
- 
-        return face_cascade, mouth_cascade, left_ear_cascade, right_ear_cascade,eye_cascade
+                
+        return face_cascade, eye_cascade
+
