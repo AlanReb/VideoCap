@@ -5,7 +5,7 @@ import os
 # Ruta interna de OpenCV donde están los XML
 haar_path = cv2.data.haarcascades
 face_cascade = cv2.CascadeClassifier(os.path.join(haar_path, 'haarcascade_frontalface_alt.xml'))
-face_mask = cv2.imread('moustache.png')
+face_mask = cv2.imread('mask.png')
 h_mask, w_mask = face_mask.shape[:2]
 
 if face_cascade.empty():
